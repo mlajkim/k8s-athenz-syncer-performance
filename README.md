@@ -40,6 +40,10 @@ Operator `k8s-athenz-syncer-performance` makes sure that if you delete members f
 
 ![Demo](./assets/03_remove_athenz_role_members.gif)
 
+Operator `k8s-athenz-syncer-performance` also syncs the members from registered Athenz groups into corresponding Kubernetes RBAC Roles.
+
+🟡 TODO: Demo
+
 ## How to run locally
 
 This operator requires the following:
