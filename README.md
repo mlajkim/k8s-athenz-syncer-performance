@@ -1,5 +1,9 @@
 # k8s-athenz-syncer-performance
 
+> [!NOTE]
+> This project is the **Next-Generation** iteration of [k8s-athenz-syncer-the-hard-clean-way](https://github.com/mlajkim/k8s-athenz-syncer-the-hard-clean-way).
+> While the previous project served as a **Proof of Concept (PoC)** to understand the internal mechanics of Kubernetes Operators from scratch ("The Hard Way"), this repository focuses on **optimization, scalability, and adherence to standard Go project layouts.**
+
 `k8s-athenz-syncer-performance` [^1] is a Kubernetes controller that syncs Athenz roles into Kubernetes RBAC, just like [Athenz/k8s-athenz-syncer](https://github.com/AthenZ/k8s-athenz-syncer), but in a more manual and educational way.
 
 <!-- TOC -->
