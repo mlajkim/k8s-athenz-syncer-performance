@@ -64,7 +64,7 @@ The following command sets up:
 ```sh
 brew install kind && kind create cluster
 
-_tmp_dir=$(date +%y%m%d_%H%M%S_k8s_athenz_syncer_the_hard_clean_way)
+_tmp_dir=$(date +%y%m%d_%H%M%S_k8s_athenz_syncer_performance)
 mkdir -p ~/test_dive/$_tmp_dir && cd ~/test_dive/$_tmp_dir
 
 git clone https://github.com/ctyano/athenz-distribution.git athenz_distribution
@@ -81,16 +81,16 @@ kubectl -n athenz port-forward deployment/athenz-ui 3000:3000 &
 Clone this project, with copying necessary certs and keys for Athenz admin user:
 
 ```sh
-git clone https://github.com/mlajkim/k8s-athenz-syncer-performance.git k8s_athenz_syncer_the_hard_clean_way
+git clone https://github.com/mlajkim/k8s-athenz-syncer-performance.git k8s_athenz_syncer_performance
 
-cp ./athenz_distribution/certs/athenz_admin.cert.pem ./k8s_athenz_syncer_the_hard_clean_way/certs/athenz_admin.cert.pem
-cp ./athenz_distribution/keys/athenz_admin.private.pem ./k8s_athenz_syncer_the_hard_clean_way/keys/athenz_admin.private.pem
+cp ./athenz_distribution/certs/athenz_admin.cert.pem ./k8s_athenz_syncer_performance/certs/athenz_admin.cert.pem
+cp ./athenz_distribution/keys/athenz_admin.private.pem ./k8s_athenz_syncer_performance/keys/athenz_admin.private.pem
 ```
 
 Run the following command, and simply hit `Enter` keys with default values:
 
 ```sh
-make -C ./k8s_athenz_syncer_the_hard_clean_way run
+make -C ./k8s_athenz_syncer_performance run
 ```
 
 ### Run locally
