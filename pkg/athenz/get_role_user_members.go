@@ -2,8 +2,8 @@ package athenz
 
 // GetRoleUserMembers returns list of unique user members in a given domain and role,
 // The logic depends on the `GetUser()` function to filter only user.* members.`
-func (c *AthenzClient) GetRoleUserMembers(domainName, roleName string) ([]string, error) {
-	res, err := c.GetRole(domainName, roleName)
+func (c *AthenzClient) GetRoleUserMembers(domainName, roleName string, expand bool) ([]string, error) {
+	res, err := c.GetRole(domainName, roleName, expand)
 	if err != nil {
 		return nil, err
 	}

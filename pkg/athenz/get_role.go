@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"net/url"
 )
 
 type AthenzMember struct {
@@ -30,10 +31,15 @@ type GetRoleResponse struct {
 // https://github.com/AthenZ/athenz/blob/master/core/zms/src/main/rdl/Role.rdli#L38-L53
 
 // GetRole returns role information in a given domain and role (modified date)
-func (c *AthenzClient) GetRole(domainName, roleName string) (GetRoleResponse, error) {
+func (c *AthenzClient) GetRole(domainName, roleName string, expand bool) (GetRoleResponse, error) {
 	endpoint := fmt.Sprintf("domain/%s/role/%s", domainName, roleName)
 
-	resp, err := c.Get(endpoint, nil)
+	params := url.Values{}
+	if expand {
+		params.Add("expand", "true")
+	}
+
+	resp, err := c.Get(endpoint, params)
 	if err != nil {
 		return GetRoleResponse{}, err
 	}
