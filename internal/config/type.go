@@ -38,7 +38,8 @@ type PolicyRule struct {
 }
 
 type ARoleMembers struct {
-	Interval time.Duration `yaml:"interval"`
+	Interval     time.Duration `yaml:"interval"`
+	IncludeGroup bool          `yaml:"includeGroup"`
 }
 
 type Namespaces struct {

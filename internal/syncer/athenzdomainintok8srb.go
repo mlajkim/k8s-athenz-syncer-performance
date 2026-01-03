@@ -53,7 +53,7 @@ func (s *Syncer) AthenzDomainIntoK8sRb(ctx context.Context) error {
 
 		for _, wantRole := range s.c.Syncer.Roles {
 			// get Athenz Role Members from Athenz:
-			users, err := s.athenzClient.GetRoleUserMembers(subDomain, wantRole.AthenzRole)
+			users, err := s.athenzClient.GetRoleUserMembers(subDomain, wantRole.AthenzRole, s.c.Syncer.ARoleMembers.IncludeGroup)
 			if err != nil {
 				continue // For maximum resilience, we continue even on errors
 			}

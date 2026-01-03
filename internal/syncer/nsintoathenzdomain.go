@@ -20,7 +20,7 @@ func (s *Syncer) NsIntoAthenzDomain(ctx context.Context, ns string) error {
 
 	// 2. CREATE NECESSARY ROLES
 	for _, role := range s.c.Syncer.Roles {
-		if err := s.athenzClient.PostRole(newDomain, role.AthenzRole); err != nil {
+		if err := s.athenzClient.PostRole(newDomain, role.AthenzRole, s.c.Syncer.ARoleMembers.IncludeGroup); err != nil {
 			return fmt.Errorf("create role %s failed: %w", role.AthenzRole, err)
 		}
 	}

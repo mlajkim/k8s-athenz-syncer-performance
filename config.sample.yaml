@@ -8,6 +8,7 @@ syncer:
   userTld: "user"
   athenzRoleMembers:
     interval: "10s"
+    includeGroup: true
   excludedNamespaces:
   - "kube-system"
   - "kube-public"

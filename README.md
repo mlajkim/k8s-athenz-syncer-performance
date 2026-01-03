@@ -1,5 +1,9 @@
 # k8s-athenz-syncer-performance
 
+> [!NOTE]
+> This project is the **Next-Generation** iteration of [k8s-athenz-syncer-the-hard-clean-way](https://github.com/mlajkim/k8s-athenz-syncer-the-hard-clean-way).
+> While the previous project served as a **Proof of Concept (PoC)** to understand the internal mechanics of Kubernetes Operators from scratch ("The Hard Way"), this repository focuses on **optimization, scalability, and adherence to standard Go project layouts.**
+
 `k8s-athenz-syncer-performance` [^1] is a Kubernetes controller that syncs Athenz roles into Kubernetes RBAC, just like [Athenz/k8s-athenz-syncer](https://github.com/AthenZ/k8s-athenz-syncer), but in a more manual and educational way.
 
 <!-- TOC -->
@@ -36,6 +40,10 @@ Operator `k8s-athenz-syncer-performance` makes sure that if you delete members f
 
 ![Demo](./assets/03_remove_athenz_role_members.gif)
 
+Operator `k8s-athenz-syncer-performance` also syncs the members from registered Athenz groups into corresponding Kubernetes RBAC Roles.
+
+🟡 TODO: Demo
+
 ## How to run locally
 
 This operator requires the following:
@@ -60,7 +68,7 @@ The following command sets up:
 ```sh
 brew install kind && kind create cluster
 
-_tmp_dir=$(date +%y%m%d_%H%M%S_k8s_athenz_syncer_the_hard_clean_way)
+_tmp_dir=$(date +%y%m%d_%H%M%S_k8s_athenz_syncer_performance)
 mkdir -p ~/test_dive/$_tmp_dir && cd ~/test_dive/$_tmp_dir
 
 git clone https://github.com/ctyano/athenz-distribution.git athenz_distribution
@@ -77,16 +85,16 @@ kubectl -n athenz port-forward deployment/athenz-ui 3000:3000 &
 Clone this project, with copying necessary certs and keys for Athenz admin user:
 
 ```sh
-git clone https://github.com/mlajkim/k8s-athenz-syncer-performance.git k8s_athenz_syncer_the_hard_clean_way
+git clone https://github.com/mlajkim/k8s-athenz-syncer-performance.git k8s_athenz_syncer_performance
 
-cp ./athenz_distribution/certs/athenz_admin.cert.pem ./k8s_athenz_syncer_the_hard_clean_way/certs/athenz_admin.cert.pem
-cp ./athenz_distribution/keys/athenz_admin.private.pem ./k8s_athenz_syncer_the_hard_clean_way/keys/athenz_admin.private.pem
+cp ./athenz_distribution/certs/athenz_admin.cert.pem ./k8s_athenz_syncer_performance/certs/athenz_admin.cert.pem
+cp ./athenz_distribution/keys/athenz_admin.private.pem ./k8s_athenz_syncer_performance/keys/athenz_admin.private.pem
 ```
 
 Run the following command, and simply hit `Enter` keys with default values:
 
 ```sh
-make -C ./k8s_athenz_syncer_the_hard_clean_way run
+make -C ./k8s_athenz_syncer_performance run
 ```
 
 ### Run locally
